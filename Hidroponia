@@ -1,0 +1,44 @@
+int valor_limete=300; // Este valor es AJUSTABLE depentiendo la humedad que queremos mantener
+void setup() {
+  Serial.begin(9600);
+  pinMode(1,OUTPUT); // Diferentes pines que van a enviar las señales electricas para activar las bombas
+  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+}
+
+void loop() {
+  Serial.println(analogRead(A0)); // Diferentes lectores de valores de humedad
+  Serial.println(analogRead(A1));
+  Serial.println(analogRead(A2));
+  Serial.println(analogRead(A3));
+  
+  if(analogRead(A0) > valor_limete){ // Programamos para que si los valores no son los deceados activen el pin 
+    digitalWrite(1,HIGH);
+  }
+  else{
+    digitalWrite(1, LOW);
+  }
+  
+  if(analogRead(A1) > valor_limete){
+    digitalWrite(2,HIGH);
+  }
+  else{
+    digitalWrite(2, LOW);
+  }
+
+  if(analogRead(A2) > valor_limete){
+    digitalWrite(3,HIGH);
+  }
+  else{
+    digitalWrite(3, LOW);
+  }
+
+  if(analogRead(A3) > valor_limete){
+    digitalWrite(4,HIGH);
+  }
+  else{
+    digitalWrite(4, LOW);
+  }
+  delay (10000); // Este es el tiempo en el que va a tomar los valores
+}
